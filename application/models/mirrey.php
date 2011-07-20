@@ -6,6 +6,19 @@ class Mirrey extends CI_Model{
 	        parent::__construct();
 	    }
 	
+	function insertame_papawh(){
+		$a = array(
+			"name" => $this->input->post("name"),
+			"id" => $this->input->post("id")
+			);
+		if($this-db->insert("mirrey", $a)){
+			return true;			
+		}				
+		else 
+			return false;
+	}
+	
+	
 	function valida_papawh(){
 		$mirreycandidato  = $this->input->post("votado");
 		$votante = $this->input->post("votante");
