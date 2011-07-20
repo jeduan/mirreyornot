@@ -22,8 +22,7 @@
       <img src="http://graph.facebook.com/702152773/picture?type=large" alt="" class="profile"/>
       <form>
       <input type="hidden" name="votado" value="702152773" />
-      <pre><?php var_dump($me) ?></pre>
-      <input type="hidden" name="votante" value="" />
+      <input type="hidden" name="votante" value="<?php echo $me['id'] ?>" />
       <input type="send" value="Pta, este, papawh" />
       </form>
     </div>
@@ -31,11 +30,14 @@
       <img src="http://graph.facebook.com/1002101672/picture?type=large" alt="" class="profile"/>
       <form>
       <input type="hidden" name="votado" value="1002101672" />
-      <input type="hidden" name="votante" value="<?php echo $me['uid'] ?>" />
+      <input type="hidden" name="votante" value="<?php echo $me['id'] ?>" />
       <input type="send" value="Wey este es de mejor familia" />
       </form>
     </div>
   </div>
+  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="js/app.js" type="text/javascript"></script>
 </body>
 
 </html>
