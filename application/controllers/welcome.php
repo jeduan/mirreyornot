@@ -39,7 +39,8 @@ class Welcome extends CI_Controller {
                         'logoutUrl' => $this->facebook->getLogoutUrl(),
                     );
         $this->session->set_userdata('fb_data', $fb_data);
-        $this->load->view('index', $fb_data);      
+        $data = array_merge($fb_data, array('app_id' => $this->config->item('app_id')));
+        $this->load->view('index', $data);      
         
       } catch (FacebookApiException $e) {
         error_log($e);
