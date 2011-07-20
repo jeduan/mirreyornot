@@ -20,9 +20,11 @@
     <h1 class="grid_10">¡Vota por tu Mirrey, papawh!</h1>
     <div class="grid_5">
       <img src="http://graph.facebook.com/702152773/picture?type=large" alt="" class="profile"/>
+      <button class="votar" >Pta, este, papawh</button>
     </div>
     <div class="grid_5">
       <img src="http://graph.facebook.com/1002101672/picture?type=large" alt="" class="profile"/>
+      <button class="votar" >Wey este es de mejor familia</button>
     </div>
   </div>
 </body>
