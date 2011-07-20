@@ -9,7 +9,7 @@
       });
     });
     
-    FB.init({appId: $('fb-root').data('appid'), cookie: true});
+    FB.init({appId: $('#fb-root').data('appid'), cookie: true});
 
     FB.getLoginStatus(function(response) {
         if (response.session) {
@@ -18,7 +18,7 @@
           // no user session available, someone you dont know
         }
     });
-    function init() {
+    var init = function() {
         FB.api('/me', function(response) {
             $("#username").html("<img src='https://graph.facebook.com/" + response.id + "/picture'/><div>" + response.name + "</div>");
 
