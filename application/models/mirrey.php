@@ -18,6 +18,7 @@ class Mirrey extends CI_Model{
 			return false;
 	}
 	
+	//Comentario dummie para prueba
 	
 	function valida_papawh(){
 		$mirreycandidato  = $this->input->post("votado");
