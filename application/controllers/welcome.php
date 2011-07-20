@@ -31,16 +31,20 @@ class Welcome extends CI_Controller {
 		if ($user) {
       try {
         // Proceed knowing you have a logged in user who's authenticated.
-        $user_profile = $this->facebook->api('/me');
+        $profile = $this->facebook->api('/me?fields=id,name,link,email');
+        $fb_data = array(
+                        'me' => $profile,
+                        'uid' => $user,
+                        'loginUrl' => $this->facebook->getLoginUrl(),
+                        'logoutUrl' => $this->facebook->getLogoutUrl(),
+                    );
+        $this->session->set_userdata('fb_data', $fb_data);
+        $this->load->view('index', $fb_data);      
+        
       } catch (FacebookApiException $e) {
         error_log($e);
         $user = null;
       }
-    }
-    
-    if ($user) {
-      $data['logoutUrl'] = $this->facebook->getLogoutUrl();
-      $this->load->view('index', $data);      
     } else {
       $data['loginUrl'] = $this->facebook->getLoginUrl();
       $this->load->view('loggedOut', $data);
