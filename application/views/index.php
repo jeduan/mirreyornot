@@ -20,14 +20,6 @@
   <div id="fb-root" data-appid="<?php echo $app_id ?>"></div> 
   <div class="container container_10">
     <h1 class="grid_10">¡Vota por tu Mirrey, papawh!</h1>
-    <div class="grid_10">
-      <div> 
-          <div id="username"></div> 
-          <a href="#" id="show-friends" style="display:none;">Show Selected Friends</a> 
-          <div id="selected-friends" style="height:30px"></div> 
-          <div id="jfmfs-container"></div> 
-      </div>
-    </div>
     <div class="grid_5">
       <img src="http://graph.facebook.com/702152773/picture?type=large" alt="" class="profile"/>
       <form>
@@ -43,6 +35,9 @@
       <input type="hidden" name="votante" value="<?php echo $me['id'] ?>" />
       <input type="submit" name="send" value="Wey este es de mejor familia" />
       </form>
+    </div>
+    <div class="grid_10">
+        <div id="jfmfs-container"></div> 
     </div>
   </div>
 <script src="http://connect.facebook.net/es_LA/all.js"></script> 
