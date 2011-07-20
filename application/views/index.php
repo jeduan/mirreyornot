@@ -1,1 +1,1 @@
-<?php var_dump($app_id) ?>
+<?php var_dump($loginUrl,$logoutUrl) ?>

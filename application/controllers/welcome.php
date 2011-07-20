@@ -20,11 +20,31 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->config->load('facebook');
+		$this->load->library('facebook');
 		
-		$data = array_merge(array(
-		  'app_id' => $this->config->item('app_id'),
-		  'app_secre' => $this->config->item('app_secret')
-		));
+		$fb_conf = array(
+		  'appId' => $this->config->item('app_id'),
+		  'secret' => $this->config->item('app_secret')
+		);
+		
+		$facebook = new Facebook($fb_conf);
+		$user = $facebook->getUser();
+		
+		if ($user) {
+      try {
+        // Proceed knowing you have a logged in user who's authenticated.
+        $user_profile = $facebook->api('/me');
+      } catch (FacebookApiException $e) {
+        error_log($e);
+        $user = null;
+      }
+    }
+    
+    if ($user) {
+      $data['logoutUrl'] = $facebook->getLogoutUrl();
+    } else {
+      $data['loginUrl'] = $facebook->getLoginUrl();
+    }
 		
 		$this->load->view('index', $data);
 	}
