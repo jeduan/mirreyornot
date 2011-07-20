@@ -37,7 +37,7 @@
                 var y = b.last_name.toLowerCase();
                 return ((x < y) ? -1 : ((x > y) ? 1 : 0));
               }
-            }).hide();
+            });
             $("#jfmfs-container").bind("jfmfs.friendload.finished", function() { 
                 window.console && console.log("finished loading!"); 
             });
@@ -49,7 +49,7 @@
       }
       
       $('#open-jfmfs').click(function() {
-        $('#jfmfs-container').slideDown();
+        $('#friend-container').dialog();
       });
 
       $("#show-friends").live("click", function() {

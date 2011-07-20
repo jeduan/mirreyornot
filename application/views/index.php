@@ -9,6 +9,7 @@
 
 	<link rel="stylesheet" href="css/960gs.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/jquery.facebook.multifriend.select.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css" rel="stylesheet" />
 	
 	<!-- Your styles -->
 	<link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
@@ -36,13 +37,14 @@
       <input type="submit" name="send" value="Wey este es de mejor familia" />
       </form>
     </div>
-    <div class="grid_10">
-        <button id="open-jfmfs">Pta conozco un wee…</button>
+    <button id="open-jfmfs">Pta conozco un wee…</button>
+    <div style="display:none" id="friend-container">
         <div id="jfmfs-container"></div> 
     </div>
   </div>
 <script src="http://connect.facebook.net/es_LA/all.js"></script> 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
 <script src="js/jquery.facebook.multifriend.select.js" type="text/javascript"></script>
 <script src="js/app.js" type="text/javascript"></script>
 </body>
