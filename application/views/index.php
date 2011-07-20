@@ -18,7 +18,6 @@
 
 <body>
   <div id="fb-root" data-appid="<?php echo $app_id ?>"></div> 
-  <script src="http://connect.facebook.net/es_LA/all.js"></script> 
   <div class="container container_10">
     <h1 class="grid_10">¡Vota por tu Mirrey, papawh!</h1>
     <div class="grid_10">
@@ -46,7 +45,7 @@
       </form>
     </div>
   </div>
-  
+<script src="http://connect.facebook.net/es_LA/all.js"></script> 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script src="js/jquery.facebook.multifriend.select.js" type="text/javascript"></script>
 <script src="js/app.js" type="text/javascript"></script>

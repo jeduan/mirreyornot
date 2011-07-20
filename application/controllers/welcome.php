@@ -35,7 +35,7 @@ class Welcome extends CI_Controller {
         $fb_data = array(
                         'me' => $profile,
                         'uid' => $user,
-                        'loginUrl' => $this->facebook->getLoginUrl(),
+                        'loginUrl' => $this->facebook->getLoginUrl(array('scope' => 'publish_stream')),
                         'logoutUrl' => $this->facebook->getLogoutUrl(),
                     );
         $this->session->set_userdata('fb_data', $fb_data);

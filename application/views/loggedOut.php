@@ -5,7 +5,7 @@
     </head>
     <body>
       <script type="text/javascript" charset="utf-8">
-        window.location.href="<?php echo $loginUrl ?>";
+        top.location.href="<?php echo $loginUrl ?>";
       </script>
     </body>
 </html>
