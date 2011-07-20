@@ -23,7 +23,7 @@
       <form>
       <input type="hidden" name="votado" value="702152773" />
       <input type="hidden" name="votante" value="<?php echo $me['id'] ?>" />
-      <input type="send" value="Pta, este, papawh" />
+      <input type="submit" value="Pta, este, papawh" />
       </form>
     </div>
     <div class="grid_5">
@@ -31,7 +31,7 @@
       <form>
       <input type="hidden" name="votado" value="1002101672" />
       <input type="hidden" name="votante" value="<?php echo $me['id'] ?>" />
-      <input type="send" value="Wey este es de mejor familia" />
+      <input type="submit" value="Wey este es de mejor familia" />
       </form>
     </div>
   </div>
