@@ -20,18 +20,18 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->config->load('facebook');
-		$this->load->library('facebook');
-				
-		$facebook = new Facebook( array(
+		$fb_config = array(
 		  'appId' => $this->config->item('app_id'),
 		  'secret' => $this->config->item('app_secret')
-		));
-		$user = $facebook->getUser();
+		);
+		$this->load->library('Facebook', $fb_config);
+				
+		$user = $this->facebook->getUser();
 		
 		if ($user) {
       try {
         // Proceed knowing you have a logged in user who's authenticated.
-        $user_profile = $facebook->api('/me');
+        $user_profile = $this->facebook->api('/me');
       } catch (FacebookApiException $e) {
         error_log($e);
         $user = null;
@@ -39,9 +39,9 @@ class Welcome extends CI_Controller {
     }
     
     if ($user) {
-      $data['logoutUrl'] = $facebook->getLogoutUrl();
+      $data['logoutUrl'] = $this->facebook->getLogoutUrl();
     } else {
-      $data['loginUrl'] = $facebook->getLoginUrl();
+      $data['loginUrl'] = $this->facebook->getLoginUrl();
     }
 		
 		$this->load->view('index', $data);
