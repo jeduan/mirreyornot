@@ -19,7 +19,12 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->config->load('facebook');
+		$fb = $this->config->item('facebook');
+		
+		$data = array_merge($fb, array());
+		
+		$this->load->view('index', $data);
 	}
 }
 
