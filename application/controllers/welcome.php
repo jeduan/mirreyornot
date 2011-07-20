@@ -51,6 +51,13 @@ class Welcome extends CI_Controller {
     }
 		
 	}
+	
+	public function vota()
+	{
+	  $this->load->model('mirrey');
+	  $vote = $this->mirrey->valida_papawh();
+	  redirect('/');
+	}
 }
 
 /* End of file welcome.php */

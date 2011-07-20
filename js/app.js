@@ -2,10 +2,11 @@
   $(function() {
     $('form').submit(function(e) {
       e.preventDefault();
-      var $t = $(this),
-        s = $t.serialize();
-        
-      console.log(s);
+      var $t = $(this);        
+      
+      $.post('/welcome/vota', $t.serialize(), function() {
+        console.log('exito');
+      });
     });
   });
 }(jQuery));
