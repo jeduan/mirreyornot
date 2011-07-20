@@ -21,13 +21,11 @@ class Welcome extends CI_Controller {
 	{
 		$this->config->load('facebook');
 		$this->load->library('facebook');
-		
-		$fb_conf = array(
+				
+		$facebook = new Facebook( array(
 		  'appId' => $this->config->item('app_id'),
 		  'secret' => $this->config->item('app_secret')
-		);
-		
-		$facebook = new Facebook($fb_conf);
+		));
 		$user = $facebook->getUser();
 		
 		if ($user) {
