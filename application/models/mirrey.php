@@ -6,7 +6,7 @@ class Mirrey extends CI_Model{
 	        parent::__construct();
 	    }
 	
-	function valida_papawh{
+	function valida_papawh(){
 		$mirreycandidato  = $this->input->post("votado");
 		$votante = $this->input->post("votante");
 		$this->db->where('votado', $mirreycandidato);
