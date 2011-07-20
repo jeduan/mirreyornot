@@ -1,4 +1,5 @@
 */config/database.php
+*/config/facebook.php
 */system/logs/log-*.php
 */system/cache/*
 */system/cache/!index.html
