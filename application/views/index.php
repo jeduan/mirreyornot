@@ -22,8 +22,9 @@
       <img src="http://graph.facebook.com/702152773/picture?type=large" alt="" class="profile"/>
       <form>
       <input type="hidden" name="votado" value="702152773" />
-      <input type="hidden" name="votante" value="<?php echo $me['uid'] ?>" />
-      <input type="send" value="Pta, este, papawh" >
+      <pre><?php var_dump($me) ?></pre>
+      <input type="hidden" name="votante" value="" />
+      <input type="send" value="Pta, este, papawh" />
       </form>
     </div>
     <div class="grid_5">
@@ -31,7 +32,7 @@
       <form>
       <input type="hidden" name="votado" value="1002101672" />
       <input type="hidden" name="votante" value="<?php echo $me['uid'] ?>" />
-      <input type="send" value="Wey este es de mejor familia" >
+      <input type="send" value="Wey este es de mejor familia" />
       </form>
     </div>
   </div>
