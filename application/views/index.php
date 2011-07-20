@@ -1,1 +1,1 @@
-<?php var_dump($loginUrl,$logoutUrl) ?>
+<?php var_dump($logoutUrl) ?>

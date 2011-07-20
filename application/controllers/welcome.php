@@ -40,11 +40,12 @@ class Welcome extends CI_Controller {
     
     if ($user) {
       $data['logoutUrl'] = $this->facebook->getLogoutUrl();
+      $this->load->view('index', $data);      
     } else {
       $data['loginUrl'] = $this->facebook->getLoginUrl();
+      $this->load->view('loggedOut', $data);
     }
 		
-		$this->load->view('index', $data);
 	}
 }
 
