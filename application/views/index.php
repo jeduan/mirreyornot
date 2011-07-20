@@ -37,6 +37,7 @@
       </form>
     </div>
     <div class="grid_10">
+        <button id="open-jfmfs">Pta conozco un wee…</button>
         <div id="jfmfs-container"></div> 
     </div>
   </div>
