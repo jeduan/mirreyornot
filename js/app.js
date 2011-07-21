@@ -54,8 +54,9 @@
       
       $('#open-jfmfs').click(function() {
         $('#friend-container').dialog({
-          minWidth:600,
-          minHeight:400
+          minWidth:620,
+          minHeight:400,
+          resizable: true
         });
       });
 
