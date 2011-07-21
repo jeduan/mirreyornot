@@ -54,7 +54,7 @@
           minWidth:620,
           minHeight:400,
           resizable: true,
-          dialog: ['center', 50]
+          position: ['center', 50]
         });
       });
 
