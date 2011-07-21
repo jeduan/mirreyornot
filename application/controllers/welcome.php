@@ -40,17 +40,32 @@ class Welcome extends CI_Controller {
 		
 		$data = array_merge($fb_data, array(
 		  'app_id' => $this->config->item('app_id'),
-		  'participants' => $participants
+		  'participants' => $participants,
+		  'message' => $this->session->userdata('message')
 		));
 		$this->load->view('index', $data);			
 	
+	}
+	
+	public function participants() {
+	  $this->load->model('mirrey');
+	  echo json_encode($this->mirrey->los_participantes());
 	}
 	
 	public function vote() {
 		$this->load->model('mirrey');
 		$vote = $this->mirrey->valida_papawh();
 		
-		redirect('/');
+	  $message = ($vote) ?		  
+		  'Pta si' :
+		  'Ya votaste papawh';
+		  
+		//$this->session->set_flashdata('message', $message);*/
+		
+		$participants = $this->mirrey->los_participantes();
+		echo json_encode(array(
+		    'vote' => $vote, 
+		    'message' => $message));
 	}
 }
 

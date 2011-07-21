@@ -6,7 +6,15 @@ class Mirrey extends CI_Model{
 	}
 	
 	function los_participantes() {
-	  return array('702152773', '2250617');
+	  $candidates = array('702152773', '2250617', '572862449', '502180815', '1002101672', '734322104');
+	  $keys = array_rand($candidates, 2);
+	  $ret = array();
+	  foreach ($keys as $key)
+	  {
+	    $ret []= $candidates[$key];
+	  }
+	  
+	  return $ret;
 	}
 	
 	function insertame_papawh(){
@@ -14,11 +22,11 @@ class Mirrey extends CI_Model{
 			"name" => $this->input->post("name"),
 			"id" => $this->input->post("id")
 			);
-		if($this->db->insert("mirrey", $a)){
+		if($this->db->insert("mirrey", $a)) {
 			return true;			
-		}				
-		else 
+		}	else {
 			return false;
+		}
 	}
 	
 	//Comentario dummie para prueba

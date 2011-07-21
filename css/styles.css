@@ -11,4 +11,13 @@ input[type=submit].blue:hover:focus { background-color: #4B649A; }
   display: block;
 }
 
+#alert {
+  background: #ccc;
+  display: none;
+  height: 30px;
+  text-align: center;
+}
 
+#mirrey-contestants {
+  height: 400px;
+}

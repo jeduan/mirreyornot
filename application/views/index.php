@@ -18,20 +18,30 @@
 
 
 <body>
-  <div id="fb-root" data-appid="<?php echo $app_id ?>"></div> 
-  <div class="container container_10">
-    <h1 class="grid_10">¡Vota por tu Mirrey, papawhhh!</h1>
+  <script type="text/html" id="mirrey_tmpl">
     <div class="grid_5">
       <a href="#" class="vota-mirrey">
-        <img src="http://graph.facebook.com/<?php echo $participants[0] ?>/picture?type=large" alt="" class="profile" 
-          data-votado="<?php echo $participants[0] ?>" data-votante="<?php echo $me['id'] ?>"/>
+        <img src="http://graph.facebook.com/<%=id%>/picture?type=large" alt="" class="profile" 
+          data-votado="<%=id%>" data-votante="<%=my_id%>"/>
       </a>
     </div>
-    <div class="grid_5">
+  </script>
+  <div id="fb-root" data-appid="<?php echo $app_id ?>" data-meid="<?php echo $me['id'] ?>"></div> 
+  <div class="container container_10">
+    <div id="alert" class="grid_10">&nbsp;</div>
+    <h1 class="grid_10">¡Vota por tu Mirrey, papawhhh!</h1>
+    <div id="mirrey-contestants">
       <a href="#" class="vota-mirrey">
-        <img src="http://graph.facebook.com/<?php echo $participants[1] ?>/picture?type=large" alt="" class="profile"
-          data-votado="<?php echo $participants[1] ?>" data-votante="<?php echo $me['id'] ?>" />
-      </a>
+         <img src="http://graph.facebook.com/<?php echo $participants[0] ?>/picture?type=large" alt="" class="profile" 
+           data-votado="<?php echo $participants[0] ?>" data-votante="<?php echo $me['id'] ?>"/>
+       </a>
+     </div>
+     <div class="grid_5">
+       <a href="#" class="vota-mirrey">
+         <img src="http://graph.facebook.com/<?php echo $participants[1] ?>/picture?type=large" alt="" class="profile"
+           data-votado="<?php echo $participants[1] ?>" data-votante="<?php echo $me['id'] ?>" />
+       </a>
+     </div>
     </div>
     <div class="grid_10">
     <button id="open-jfmfs">Pta conozco un wee…</button>
@@ -43,6 +53,7 @@
 <script src="http://connect.facebook.net/es_LA/all.js"></script> 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+<script src="js/resig.microtemplates.js" type="text/javascript"></script>
 <script src="js/jquery.facebook.multifriend.select.js" type="text/javascript"></script>
 <script src="js/app.js" type="text/javascript"></script>
 </body>

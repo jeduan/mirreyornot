@@ -1,5 +1,13 @@
 (function($){
   $(function() {
+    var render = function(participante) {
+      var p = {
+        id: participante,
+        my_id: $('#fb-root').data('meid')
+      };
+      return tmpl('mirrey_tmpl', p);
+    };
+    
     $('.vota-mirrey').click(function(e) {
       e.preventDefault();
       var $i = $(this).find('img'),
@@ -8,8 +16,13 @@
           votado: $i.data('votado')
         };
       
-      $.post('/welcome/vote', data, function() {
-        console.log('exito');
+      $.post('/welcome/vote', data, function(data) {
+        $.getJSON('/welcome/participants', function(participants){
+          var $buffer = $('#mirrey-contestants').empty();
+          $.each(participants, function(i, participant) {
+            $buffer.append(render(participant));
+          });
+        });
       });
     });
     
