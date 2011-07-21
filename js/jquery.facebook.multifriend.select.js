@@ -82,7 +82,7 @@
 			        friends = response;
 			    
           if (settings.filter && $.isFunction(settings.filter)) {
-            friends = settings.filter.call(this, friends) ) 
+            friends = settings.filter.call(this, friends); 
           }
           
           friends = friends.data.sort(settings.sorter),
