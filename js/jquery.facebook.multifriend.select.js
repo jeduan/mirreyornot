@@ -29,6 +29,7 @@
             max_selected_message: "{0} of {1} selected",
 			pre_selected_friends: [],
 			exclude_friends: [],
+			filter: null,
 			friend_fields: "id,name",
 			sorter: function(a, b) {
                 var x = a.name.toLowerCase();
@@ -75,12 +76,19 @@
             all_friends;
             
         FB.api('/me/friends?fields=' + settings.friend_fields, function(response) {
-            var sortedFriendData = response.data.sort(settings.sorter),
-                preselectedFriends = {},
-                buffer = [],
-			    selectedClass = "";
+          var preselectedFriends = {},
+              buffer = [],
+			        selectedClass = "",
+			        friends = response;
+			    
+          if (settings.filter && $.isFunction(settings.filter)) {
+            friends = settings.filter.call(this, friends) ) 
+          }
+          
+          friends = friends.data.sort(settings.sorter),
+          
             
-            $.each(sortedFriendData, function(i, friend) {
+          $.each(sortedFriendData, function(i, friend) {
 				if(! (friend.id in excluded_friends_graph)) {
 					selectedClass = (friend.id in preselected_friends_graph) ? "selected" : "";
 	                buffer.push("<div class='jfmfs-friend " + selectedClass + " ' id='" + friend.id  +"'><img/><div class='friend-name'>" + friend.name + "</div></div>");            

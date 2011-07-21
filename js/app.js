@@ -36,6 +36,14 @@
                 all: "Todos",
                 max_selected_message: "{0} de {1} seleccionados"
               },
+              friend_fields: "id,name,gender",
+              filter: function(friends){
+                var ret = [];
+                $.each(friends, function(i, friend) {
+                  (friend.gender === 'male') && ret.push(friend);
+                });
+                return ret;
+              },
               sorter: function(a, b) {
                 var x = a.last_name.toLowerCase();
                 var y = b.last_name.toLowerCase();
