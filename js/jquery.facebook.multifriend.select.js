@@ -79,13 +79,13 @@
           var preselectedFriends = {},
               buffer = [],
 			        selectedClass = "",
-			        friends = response;
+			        friends = response.data;
 			    
           if (settings.filter && $.isFunction(settings.filter)) {
             friends = settings.filter.call(this, friends); 
           }
           
-          friends = friends.data.sort(settings.sorter),
+          friends = friends.sort(settings.sorter);
           
             
           $.each(sortedFriendData, function(i, friend) {
@@ -238,7 +238,7 @@
                     var filter = $(this).val();
                     clearTimeout(keyUpTimer);
                     keyUpTimer = setTimeout( function() {
-                        if(filter == '') {
+                        if(filter === '') {
                             all_friends.removeClass("hide-filtered");
                         }
                         else {
@@ -254,7 +254,7 @@
                     }
                     })
                 .blur(function() {
-                    if($.trim($(this).val()) == '') {
+                    if($.trim($(this).val()) === '') {
                         $(this).val('Start typing a name');
                     }                        
                     });
