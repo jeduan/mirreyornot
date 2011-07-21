@@ -88,7 +88,7 @@
           friends = friends.sort(settings.sorter);
           
             
-          $.each(sortedFriendData, function(i, friend) {
+          $.each(friends, function(i, friend) {
 				if(! (friend.id in excluded_friends_graph)) {
 					selectedClass = (friend.id in preselected_friends_graph) ? "selected" : "";
 	                buffer.push("<div class='jfmfs-friend " + selectedClass + " ' id='" + friend.id  +"'><img/><div class='friend-name'>" + friend.name + "</div></div>");            
