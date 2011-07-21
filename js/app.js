@@ -54,7 +54,8 @@
           minWidth:620,
           minHeight:400,
           resizable: true,
-          position: ['center', 50]
+          position: ['center', 50],
+          title: 'Pta ¿como se llamaba?'
         });
       });
 
