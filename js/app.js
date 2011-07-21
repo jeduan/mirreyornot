@@ -53,7 +53,10 @@
       }
       
       $('#open-jfmfs').click(function() {
-        $('#friend-container').dialog();
+        $('#friend-container').dialog({
+          minWidth:600px;
+          minHeight:400px;
+        });
       });
 
       $("#show-friends").live("click", function() {
