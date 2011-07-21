@@ -6,7 +6,7 @@
         data = {
           votante: $i.data('votante'),
           votado: $i.data('votado')
-        }
+        };
       
       $.post('/welcome/vota', data, function() {
         console.log('exito');
@@ -27,7 +27,7 @@
             $("#jfmfs-container").jfmfs({ 
               max_selected: 3, 
               max_selected_message: "{0} de {1}",
-              friend_fields: "id,name,last_name",
+              friend_fields: "id,name,last_name,gender",
               pre_selected_friends: 702152773,
               labels: {
                 selected: "Seleccionados",
@@ -36,26 +36,24 @@
                 all: "Todos",
                 max_selected_message: "{0} de {1} seleccionados"
               },
-              friend_fields: "id,name,gender",
               filter: function(friends){
                 var ret = [];
                 $.each(friends, function(i, friend) {
-                  (friend.gender === 'male') && ret.push(friend);
+                  if (friend.gender === 'male') ret.push(friend);
                 });
                 return ret;
-              },
-              sorter: function(a, b) {
-                var x = a.last_name.toLowerCase();
-                var y = b.last_name.toLowerCase();
+              },  sorter: function(a, b) {
+                var x = a.last_name.toLowerCase(),
+                  y = b.last_name.toLowerCase();
                 return ((x < y) ? -1 : ((x > y) ? 1 : 0));
               }
             });
             $("#jfmfs-container").bind("jfmfs.selection.changed", function(e, data) { 
-                window.console && console.log("changed", data);
+                if (window.console) console.log("changed", data);
             });                     
 
         });
-      }
+      };
       
       $('#open-jfmfs').click(function() {
         $('#friend-container').dialog({
