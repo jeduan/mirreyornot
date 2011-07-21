@@ -42,9 +42,6 @@
                 return ((x < y) ? -1 : ((x > y) ? 1 : 0));
               }
             });
-            $("#jfmfs-container").bind("jfmfs.friendload.finished", function() { 
-                window.console && console.log("finished loading!"); 
-            });
             $("#jfmfs-container").bind("jfmfs.selection.changed", function(e, data) { 
                 window.console && console.log("changed", data);
             });                     
@@ -56,7 +53,8 @@
         $('#friend-container').dialog({
           minWidth:620,
           minHeight:400,
-          resizable: true
+          resizable: true,
+          dialog: ['center', 50]
         });
       });
 
