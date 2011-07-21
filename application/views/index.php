@@ -8,7 +8,7 @@
 	<!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css" type="text/css" media="screen" /><![endif]-->
 
 	<link rel="stylesheet" href="css/960gs.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/jquery.facebook.multifriend.select-list.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/jquery.facebook.multifriend.select.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/base/jquery-ui.css" rel="stylesheet" />
 	
 	<!-- Your styles -->
@@ -33,7 +33,9 @@
           data-votado="1002101672" data-votante="<?php echo $me['id'] ?>" />
       </a>
     </div>
+    <div class="grid_10">
     <button id="open-jfmfs">Pta conozco un wee…</button>
+    </div>
     <div style="display:none" id="friend-container">
         <div id="jfmfs-container"></div> 
     </div>
