@@ -1,10 +1,14 @@
 (function($){
   $(function() {
-    $('form').submit(function(e) {
+    $('.vota-mirrey').click(function(e) {
       e.preventDefault();
-      var $t = $(this);        
+      var $i = $(this).find('img'),
+        data = {
+          votante: $i.data('votante'),
+          votado: $i.data('votado')
+        }
       
-      $.post('/welcome/vota', $t.serialize(), function() {
+      $.post('/welcome/vota', data, function() {
         console.log('exito');
       });
     });

@@ -22,20 +22,16 @@
   <div class="container container_10">
     <h1 class="grid_10">¡Vota por tu Mirrey, papawh!</h1>
     <div class="grid_5">
-      <img src="http://graph.facebook.com/702152773/picture?type=large" alt="" class="profile"/>
-      <form>
-      <input type="hidden" name="votado" value="702152773" />
-      <input type="hidden" name="votante" value="<?php echo $me['id'] ?>" />
-      <input type="submit" name="send" value="Pta, este, papawh" />
-      </form>
+      <a href="#" class="vota-mirrey">
+        <img src="http://graph.facebook.com/702152773/picture?type=large" alt="" class="profile" 
+          data-votado="702152773" data-votante="<?php echo $me['id'] ?>"/>
+      </a>
     </div>
     <div class="grid_5">
-      <img src="http://graph.facebook.com/1002101672/picture?type=large" alt="" class="profile"/>
-      <form>
-      <input type="hidden" name="votado" value="1002101672" />
-      <input type="hidden" name="votante" value="<?php echo $me['id'] ?>" />
-      <input type="submit" name="send" value="Wey este es de mejor familia" />
-      </form>
+      <a href="#" class="vota-mirrey">
+        <img src="http://graph.facebook.com/1002101672/picture?type=large" alt="" class="profile"
+          data-votado="1002101672" data-votante="<?php echo $me['id'] ?>" />
+      </a>
     </div>
     <button id="open-jfmfs">Pta conozco un wee…</button>
     <div style="display:none" id="friend-container">
