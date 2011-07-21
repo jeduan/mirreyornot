@@ -4,3 +4,5 @@
 */system/cache/*
 */system/cache/!index.html
 j1273091dfadf.php
+*.esproj
+*.tmproj

@@ -1,17 +1,20 @@
 <?php 
 class Mirrey extends CI_Model{
 	
-	function __construct()
-	    {
-	        parent::__construct();
-	    }
+	function __construct() {
+	  parent::__construct();
+	}
+	
+	function los_participantes() {
+	  return array('702152773', '2250617');
+	}
 	
 	function insertame_papawh(){
 		$a = array(
 			"name" => $this->input->post("name"),
 			"id" => $this->input->post("id")
 			);
-		if($this-db->insert("mirrey", $a)){
+		if($this->db->insert("mirrey", $a)){
 			return true;			
 		}				
 		else 

@@ -20,17 +20,17 @@
 <body>
   <div id="fb-root" data-appid="<?php echo $app_id ?>"></div> 
   <div class="container container_10">
-    <h1 class="grid_10">¡Vota por tu Mirrey, papawh!</h1>
+    <h1 class="grid_10">¡Vota por tu Mirrey, papawhhh!</h1>
     <div class="grid_5">
       <a href="#" class="vota-mirrey">
-        <img src="http://graph.facebook.com/702152773/picture?type=large" alt="" class="profile" 
-          data-votado="702152773" data-votante="<?php echo $me['id'] ?>"/>
+        <img src="http://graph.facebook.com/<?php echo $participants[0] ?>/picture?type=large" alt="" class="profile" 
+          data-votado="<?php echo $participants[0] ?>" data-votante="<?php echo $me['id'] ?>"/>
       </a>
     </div>
     <div class="grid_5">
       <a href="#" class="vota-mirrey">
-        <img src="http://graph.facebook.com/1002101672/picture?type=large" alt="" class="profile"
-          data-votado="1002101672" data-votante="<?php echo $me['id'] ?>" />
+        <img src="http://graph.facebook.com/<?php echo $participants[1] ?>/picture?type=large" alt="" class="profile"
+          data-votado="<?php echo $participants[1] ?>" data-votante="<?php echo $me['id'] ?>" />
       </a>
     </div>
     <div class="grid_10">
