@@ -8,7 +8,7 @@
           votado: $i.data('votado')
         };
       
-      $.post('/welcome/vota', data, function() {
+      $.post('/welcome/vote', data, function() {
         console.log('exito');
       });
     });
@@ -23,47 +23,46 @@
         }
     });
     var init = function() {
-        FB.api('/me', function(response) {
-            $("#jfmfs-container").jfmfs({ 
-              max_selected: 3, 
-              max_selected_message: "{0} de {1}",
-              friend_fields: "id,name,last_name,gender",
-              pre_selected_friends: 702152773,
-              labels: {
-                selected: "Seleccionados",
-                filter_default: "Empieza a escribir un nombre",
-                filter_title: "Encuentra amigos:",
-                all: "Todos",
-                max_selected_message: "{0} de {1} seleccionados"
-              },
-              filter: function(friends){
-                var ret = [];
-                $.each(friends, function(i, friend) {
-                  if (friend.gender === 'male') ret.push(friend);
-                });
-                return ret;
-              },  sorter: function(a, b) {
-                var x = a.last_name.toLowerCase(),
-                  y = b.last_name.toLowerCase();
-                return ((x < y) ? -1 : ((x > y) ? 1 : 0));
-              }
+      FB.api('/me', function(response) {
+        $("#jfmfs-container").jfmfs({ 
+          max_selected: 3, 
+          max_selected_message: "{0} de {1}",
+          friend_fields: "id,name,last_name,gender",
+          pre_selected_friends: 702152773,
+          labels: {
+            selected: "Seleccionados",
+            filter_default: "Empieza a escribir un nombre",
+            filter_title: "Encuentra hasta 3 amigos:",
+            all: "Todos",
+            max_selected_message: ""
+          },
+          filter: function(friends){
+            var ret = [];
+            $.each(friends, function(i, friend) {
+              if (friend.gender === 'male') ret.push(friend);
             });
-            $("#jfmfs-container").bind("jfmfs.selection.changed", function(e, data) { 
-                if (window.console) console.log("changed", data);
-            });                     
-
+            return ret;
+          },  sorter: function(a, b) {
+            var x = a.last_name.toLowerCase(),
+              y = b.last_name.toLowerCase();
+            return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+          }
         });
-      };
-      
-      $('#open-jfmfs').click(function() {
-        $('#friend-container').dialog({
-          minWidth:620,
-          minHeight:400,
-          resizable: true,
-          position: ['center', 50],
-          title: 'Pta ¿como se llamaba?'
-        });
+        $("#jfmfs-container").bind("jfmfs.selection.changed", function(e, data) { 
+            if (window.console) console.log("changed", data);
+        });                     
       });
+    };
+      
+    $('#open-jfmfs').click(function() {
+      $('#friend-container').dialog({
+        minWidth:620,
+        minHeight:400,
+        resizable: true,
+        position: ['center', 50],
+        title: 'Pta ¿como se llamaba?'
+      });
+    });
 
       $("#show-friends").live("click", function() {
           var friendSelector = $("#jfmfs-container").data('jfmfs');             
