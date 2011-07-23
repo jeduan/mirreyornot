@@ -17,9 +17,9 @@ font: normal 12px "Lucida Grande", "Lucida Sans Unicode", Geneva, Arial, Verdana
 
 .container {
    background: white url(../images/fondo_mirrey.png) top center no-repeat;   
-   min-height: 1000px;
+   min-height: 800px;
    height:auto !important;
-   height: 1000px;
+   height: 800px;
 }
 
 h1.logo {
