@@ -1,10 +1,25 @@
 
-body { background: white url(../images/fondo_mirrey.png) top center no-repeat; 
+body { 
 font: normal 12px "Lucida Grande", "Lucida Sans Unicode", Geneva, Arial, Verdana, sans-serif; color: #004B69; padding: 0 10px 10px; 
-  min-height: 1000px;
-  height:auto !important;
-  height: 1000px;
+}
 
+.group:before,
+.group:after {
+    content:"";
+    display:table;
+}
+.group:after {
+    clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+.container {
+   background: white url(../images/fondo_mirrey.png) top center no-repeat;   
+   min-height: 1000px;
+   height:auto !important;
+   height: 1000px;
 }
 
 h1.logo {
@@ -35,4 +50,10 @@ input[type=submit].blue:hover:focus { background-color: #4B649A; }
 
 #mirrey-contestants {
   height: 400px;
+}
+
+.action-buttons img {
+  display: block;
+  margin: 0;
+  cursor: pointer;
 }

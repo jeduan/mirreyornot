@@ -2,6 +2,11 @@
 
 class Welcome extends CI_Controller {
 
+  public function __construct() {
+    parent::__construct();
+    $this->load->model('mirrey');
+  }
+
 	public function index() {
 		$this->config->load('facebook');
 		$fb_config = array(
@@ -29,14 +34,11 @@ class Welcome extends CI_Controller {
 		
 		$fb_data = array(
 			'me' => $profile,
-			'uid' => $user,
-			'loginUrl' => $this->facebook->getLoginUrl(array('scope' => 'publish_stream')),
-			'logoutUrl' => $this->facebook->getLogoutUrl(),
+			'uid' => $user
 	  );
 		$this->session->set_userdata('fb_data', $fb_data);
     
-    $this->load->model('mirrey');
-		$participants = $this->mirrey->los_participantes();
+    $participants = $this->mirrey->los_participantes();
 		
 		$data = array_merge($fb_data, array(
 		  'app_id' => $this->config->item('app_id'),
@@ -48,12 +50,11 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function participants() {
-	  $this->load->model('mirrey');
-	  echo json_encode($this->mirrey->los_participantes());
+	  $participants = $this->mirrey->los_participantes();
+	  echo json_encode($participants);
 	}
 	
 	public function vote() {
-		$this->load->model('mirrey');
 		$vote = $this->mirrey->valida_papawh();
 		
 	  $message = ($vote) ?		  
@@ -62,7 +63,6 @@ class Welcome extends CI_Controller {
 		  
 		//$this->session->set_flashdata('message', $message);*/
 		
-		$participants = $this->mirrey->los_participantes();
 		echo json_encode(array(
 		    'vote' => $vote, 
 		    'message' => $message));

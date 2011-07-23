@@ -8,7 +8,16 @@
       return tmpl('mirrey_tmpl', p);
     };
     
-    $('.vota-mirrey').click(function(e) {
+    var reload = function() {
+      $.getJSON('/welcome/participants', function(participants){
+        var $buffer = $('#mirrey-contestants').empty();
+        $.each(participants, function(i, participant) {
+          $buffer.append(render(participant));
+        });
+      });
+    };
+    
+    $('#mirrey-contestants').delegate('.vota-mirrey', 'click', function(e) {
       e.preventDefault();
       var $i = $(this).find('img'),
         data = {
@@ -16,13 +25,8 @@
           votado: $i.data('votado')
         };
       
-      $.post('/welcome/vote', data, function(data) {
-        $.getJSON('/welcome/participants', function(participants){
-          var $buffer = $('#mirrey-contestants').empty();
-          $.each(participants, function(i, participant) {
-            $buffer.append(render(participant));
-          });
-        });
+      $.post('/welcome/vote', data, function() {
+        reload();
       });
     });
     
@@ -30,22 +34,22 @@
 
     FB.getLoginStatus(function(response) {
         if (response.session) {
-          init();
+          busca_amigos();
         } else {
           // no user session available, someone you dont know
         }
     });
-    var init = function() {
+    var busca_amigos = function() {
       FB.api('/me', function(response) {
         $("#jfmfs-container").jfmfs({ 
-          max_selected: 3, 
+          max_selected: 1, 
           max_selected_message: "{0} de {1}",
           friend_fields: "id,name,last_name,gender",
           pre_selected_friends: 702152773,
           labels: {
             selected: "Seleccionados",
             filter_default: "Empieza a escribir un nombre",
-            filter_title: "Encuentra hasta 3 amigos:",
+            filter_title: "Encuentra a tu amigo mas mirrey:",
             all: "Todos",
             max_selected_message: ""
           },
@@ -67,19 +71,14 @@
       });
     };
       
-    $('#open-jfmfs').click(function() {
+    $('#add-mirrey').click(function() {
       $('#friend-container').dialog({
         minWidth:620,
         minHeight:400,
         resizable: true,
         position: ['center', 50],
-        title: 'Pta ¿como se llamaba?'
+        title: 'Elige a tu mirreey'
       });
     });
-
-      $("#show-friends").live("click", function() {
-          var friendSelector = $("#jfmfs-container").data('jfmfs');             
-          $("#selected-friends").html(friendSelector.getSelectedIds().join(', ')); 
-      });
   });
 }(jQuery));
