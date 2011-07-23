@@ -62,9 +62,11 @@ class Welcome extends CI_Controller {
   public function add() {
     $name = $this->input->post("name");
     $id = $this->input->post("id");
+    $nominator = $this->input->post("nominator");
     
-    $insert = $this->mirrey->insertame_papawh($name, $id);
-    echo json_encode($insert);
+    $this->mirrey->insertame_papawh($name, $id, $nominator);
+    $participants = $this->mirrey->los_participantes($id);
+    echo json_encode($participants);
   }
   
   public function vote() {

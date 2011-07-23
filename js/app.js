@@ -14,9 +14,10 @@
         });              
       }
       
-      
+      //TODO encontrar por que se la esta fanfiruleando aqui
       if ( ! participants || ! $.isArray(participants) ) {
         $.getJSON('/welcome/participants', function(data){
+          console.log(data);
           paint(data);
         });
       } else {
@@ -98,7 +99,15 @@
           }
         });
         $("#jfmfs-container").bind("jfmfs.selection.changed", function(e, data) { 
-            if (window.console) console.log("changed", data);
+          var sent = $.extend(data[0], {nominator:$('#fb-root').data('meid')}),
+            callback = function(response){
+              if (response && $.isArray(response)){
+                console.log(response);
+                $('#friend-container').dialog('close');
+                reload(response);
+              }
+            };
+          $.post('/welcome/add', sent, callback, 'json');
         });                     
       });
     };
