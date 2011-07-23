@@ -1,20 +1,28 @@
 (function($){
   $(function() {
-    var render = function(participante) {
-      var p = {
-        id: participante,
-        my_id: $('#fb-root').data('meid')
-      };
-      return tmpl('mirrey_tmpl', p);
-    };
     
-    var reload = function() {
-      $.getJSON('/welcome/participants', function(participants){
+    var reload = function(participants) {
+
+      var paint = function(participants) {
         var $buffer = $('#mirrey-contestants').empty();
         $.each(participants, function(i, participant) {
-          $buffer.append(render(participant));
+          var mirrey = tmpl('mirrey_tmpl', {
+            id: participant,
+            my_id: $('#fb-root').data('meid')
+          });
+          $buffer.append(mirrey);
+        });              
+      }
+      
+      
+      if ( ! participants || ! $.isArray(participants) ) {
+        $.getJSON('/welcome/participants', function(data){
+          paint(data);
         });
-      });
+      } else {
+        paint(participants);
+      }
+
     };
     
     $('#mirrey-contestants').delegate('.vota-mirrey', 'click', function(e) {
@@ -25,17 +33,25 @@
           votado: $i.data('votado')
         };
       
+      _gaq.push(['_trackEvent', 'Votacion', 'Voto', $i.data('votado'), null]);
+      
       $.post('/welcome/vote', data, function() {
         reload();
       });
     });  
     
-    $('#skip-mirrey').click(reload);
+    $('#skip-mirrey').click(function(){
+      reload();
+      
+      _gaq.push(['_trackEvent', 'Skip', 'Voting', null, null]);
+    });
     
     $('#top-mirrey').click(function(){
       $.getJSON('/welcome/topten', function(data){
 
         if (!data) return;
+        
+        _gaq.push(['_trackEvent', 'Topten', 'Open', null, null]);
         
         $('<div />').html(tmpl('topten_tmpl', data)).dialog({
           minWidth:620,
@@ -62,7 +78,6 @@
           max_selected: 1, 
           max_selected_message: "{0} de {1}",
           friend_fields: "id,name,last_name,gender",
-          pre_selected_friends: 702152773,
           labels: {
             selected: "Seleccionados",
             filter_default: "Empieza a escribir un nombre",
@@ -89,6 +104,9 @@
     };
       
     $('#add-mirrey').click(function() {
+      
+      _gaq.push(['_trackEvent', 'Agregar', 'Open', null, null]);
+      
       $('#friend-container').dialog({
         minWidth:620,
         minHeight:400,

@@ -59,15 +59,23 @@ class Welcome extends CI_Controller {
 	  echo json_encode($participants);
 	}
 	
+	public function add() {
+	  $name = $this->input->post("name");
+	  $id = $this->input->post("id");
+	  
+	  $insert = $this->mirrey->insertame_papawh($name, $id);
+	  echo json_encode($insert);
+	}
+	
 	public function vote() {
-		$vote = $this->mirrey->valida_papawh();
+	  $votado =  $this->input->post("votado");
+	  $votante = $this->input->post("votante");
+		$vote = $this->mirrey->valida_papawh($votado, $votante);
 		
 	  $message = ($vote) ?		  
 		  'Pta si' :
 		  'Ya votaste papawh';
-		  
-		//$this->session->set_flashdata('message', $message);*/
-		
+		  		
 		echo json_encode(array(
 		    'vote' => $vote, 
 		    'message' => $message));
