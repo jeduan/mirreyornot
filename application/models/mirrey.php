@@ -17,6 +17,13 @@ class Mirrey extends CI_Model{
 	  return $ret;
 	}
 	
+	function los_mejores_10() {
+	  $sql = "SELECT `votado` as id, COUNT(`votado`) as total FROM `votos` GROUP BY `votado` ORDER BY total DESC LIMIT 10";
+	  $query = $this->db->query($sql);
+	  
+	  return array('data' => $query->result_array());
+	}
+	
 	function insertame_papawh(){
 		$a = array(
 			"name" => $this->input->post("name"),

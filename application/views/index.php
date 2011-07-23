@@ -27,6 +27,14 @@
       </a>
     </div>
   </script>
+  <script type="text/html" id="topten_tmpl">
+    <% var j = data.length; for (var i = 0; i < j; i++) { %>
+    <div class="mirrey-top grid_1">
+      <a href="http://facebook.com/profile.php?id=<%=data[i].id%>" target="_blank"><img src="http://graph.facebook.com/<%=data[i].id%>/picture?type=normal" /></a>
+    </div>
+    <% if (i === 4) {%><div class="clear" /><%}%>
+    <% } %>
+  </script>
   <div id="fb-root" data-appid="<?php echo $app_id ?>" data-meid="<?php echo $me['id'] ?>"></div> 
   <div class="container container_10 group">
     <h1 class="logo"><img src="images/logo_mirrey.png" /></h1>
@@ -45,14 +53,10 @@
          </a>
      </div>
     </div>
-    <div class="grid_5">&nbsp;</div>
-    <div class="grid_5 action-buttons">
+    <div class="prefix_5 grid_5 action-buttons">
       <img id="skip-mirrey" src="images/mas_mirreyes.png" />
       <img src="images/agregar_mirrey.png" id="add-mirrey" />
       <img src="images/top_mirrey.png" id="top-mirrey" />
-    </div>
-    <div id="footer" class="grid_10">
-      Brought to you by
     </div>
   </div>
 <div style="display:none" id="friend-container">

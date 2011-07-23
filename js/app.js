@@ -28,6 +28,23 @@
       $.post('/welcome/vote', data, function() {
         reload();
       });
+    });  
+    
+    $('#skip-mirrey').click(reload);
+    
+    $('#top-mirrey').click(function(){
+      $.getJSON('/welcome/topten', function(data){
+
+        if (!data) return;
+        
+        $('<div />').html(tmpl('topten_tmpl', data)).dialog({
+          minWidth:620,
+          minHeight:400,
+          resizable: true,
+          position: ['center', 50],
+          title: 'Goeeey ¿hacer fila en el antro?'
+        });
+      });
     });
     
     FB.init({appId: $('#fb-root').data('appid'), cookie: true});

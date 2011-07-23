@@ -49,6 +49,11 @@ class Welcome extends CI_Controller {
 	
 	}
 	
+	public function topten() {
+	  $top = $this->mirrey->los_mejores_10();
+	  echo json_encode($top);
+	}
+	
 	public function participants() {
 	  $participants = $this->mirrey->los_participantes();
 	  echo json_encode($participants);
