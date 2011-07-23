@@ -14,10 +14,8 @@
         });              
       }
       
-      //TODO encontrar por que se la esta fanfiruleando aqui
       if ( ! participants || ! $.isArray(participants) ) {
         $.getJSON('/welcome/participants', function(data){
-          console.log(data);
           paint(data);
         });
       } else {

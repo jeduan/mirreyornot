@@ -54,9 +54,9 @@
      </div>
     </div>
     <div class="prefix_5 grid_5 action-buttons">
-      <img id="skip-mirrey" src="images/mas_mirreyes.png" />
       <img src="images/agregar_mirrey.png" id="add-mirrey" />
       <img src="images/top_mirrey.png" id="top-mirrey" />
+      <img id="skip-mirrey" src="images/mas_mirreyes.png" />      
     </div>
   </div>
 <div style="display:none" id="friend-container">
